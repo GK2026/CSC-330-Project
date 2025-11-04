@@ -7,7 +7,7 @@ if (typeof window !== "undefined") {
   document.addEventListener("DOMContentLoaded", () => {
     
     // Set the header text
-    const message = 'This is our prototype';
+    const message = 'Daily Diet';
     document.querySelector('#header').innerHTML = message;
 
     // Log the message to the browser console
