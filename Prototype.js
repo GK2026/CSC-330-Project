@@ -1,33 +1,4 @@
-// --------------------------
-// BROWSER CODE
-// --------------------------
-// This code only runs in the browser environment (window exists)
-if (typeof window !== "undefined") {
-  // Wait until the DOM content is fully loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    
-    // Set the header text
-    const message = 'This is our prototype';
-    document.querySelector('#header').innerHTML = message;
-
-    // Log the message to the browser console
-    console.log(message);
-
-    // --------------------------
-    // Calorie tracker logic
-    // --------------------------
-    const addBtn = document.getElementById("addCal");       // Button to add calories
-    const calInput = document.getElementById("Calorie");   // Input field for calories
-    const totalDisplay = document.getElementById("totalCal"); // Span to display total
-
-    // Start total calories at 0
-    let totalCalories = 0;
-
-    // Event listener for button click
-    addBtn.addEventListener("click", () => {
-      const calories = Number(calInput.value); // Convert input to number
-
-      // Validate input
+// Validate input
       if (!isNaN(calories) && calories > 0) {
         // Add to total and update display
         totalCalories += calories;
