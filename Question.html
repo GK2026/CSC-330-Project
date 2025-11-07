@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -42,56 +41,52 @@
     <h1>Welcome to Daily Diet</h1>
 
     <div class="input-group">
-      <input type="text" id="NameInput" placeholder="Enter Name">
+      <input type="text" id="NameInput" placeholder="Enter Name" />
       <button id="NameBtn">Enter Name</button>
     </div>
 
     <div class="input-group">
-      <input type="text" id="Gender" placeholder="Enter Gender (F or M)">
-      <button id="Gender">Enter Gender</button>
+      <input type="text" id="GenderInput" placeholder="Enter Gender (F or M)" />
+      <button id="GenderBtn">Enter Gender</button>
     </div>
 
     <div class="input-group">
-      <input type="number" id="Aget" placeholder="Enter Age">
-      <button id="Age">Enter Age</button>
+      <input type="number" id="AgeInput" placeholder="Enter Age" />
+      <button id="AgeBtn">Enter Age</button>
     </div>
 
     <div class="input-group">
-      <input type="number" id="Weight" placeholder="Enter Weight">
-      <button id="Weight">Enter Weight</button>
+      <input type="number" id="WeightInput" placeholder="Enter Weight" />
+      <button id="WeightBtn">Enter Weight</button>
     </div>
 
     <div class="input-group">
-      <input type="number" id="Hight" placeholder="Enter Height">
-      <button id="Hight">Enter Hight</button>
+      <input type="number" id="HeightInput" placeholder="Enter Height" />
+      <button id="HeightBtn">Enter Height</button>
     </div>
 
     <div class="input-group">
-      <input type="number" id="GoalsInput" placeholder="Enter Calorie Goal">
+      <input type="number" id="CalGoalInput" placeholder="Enter Calorie Goal" />
       <button id="CalGoalBtn">Enter Calorie Goal</button>
     </div>
 
-   <div class="input-group">
-      <input type="number" id="GoalsInput" placeholder="Enter Fats Goal">
+    <div class="input-group">
+      <input type="number" id="FatGoalInput" placeholder="Enter Fat Goal" />
       <button id="FatGoalBtn">Enter Fat Goal</button>
     </div>
 
-   <div class="input-group">
-      <input type="number" id="GoalsInput" placeholder="Enter Sodium Goal">
+    <div class="input-group">
+      <input type="number" id="SodGoalInput" placeholder="Enter Sodium Goal" />
       <button id="SodGoalBtn">Enter Sodium Goal</button>
     </div>
 
-        <label for="Health Goals">Health Goals</label>
-        <select id="Health Goal">
-            <option value=30>Track Calorie Intake</option>
-            <option value=20>Track Fat Intake</option>
-            <option value=10>Track Sodium inkake</option>
-        </select>
- 
+    <label for="HealthGoal">Health Goals</label>
+    <select id="HealthGoal">
+      <option value="calories">Track Calorie Intake</option>
+      <option value="fat">Track Fat Intake</option>
+      <option value="sodium">Track Sodium Intake</option>
+    </select>
 
-
-
-
-
+    <script src="script.js"></script>
   </body>
 </html>
