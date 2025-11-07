@@ -98,7 +98,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Dropdown change
   document.getElementById("HealthGoal").addEventListener("change", function () {
     const selected = this.options[this.selectedIndex].text;
-    alert(`Selected Health Goal: ${selected}`);
-    console.log(`Health Goal: ${selected}`);
   });
 });
