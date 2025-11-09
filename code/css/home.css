@@ -1,3 +1,21 @@
+/* oops i think i deleted some important css, here's my attempt to recreate the buttons and sectioning -maia */
+
+section {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+button {
+  background-color: #8fbc8f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
