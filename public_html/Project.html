@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Diet Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin: 40px;
+    }
+
+    h1 { font-size: 28px; }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+
+    button {
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .hidden { display: none; }
+
+    .popup {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="header">Daily Diet</h1>
+
+  <!-- QUESTIONNAIRE PAGE -->
+  <section id="question">
+    <h2>Welcome to Daily Diet Questionnaire</h2>
+
+    <div class="input-group">
+      <input type="text" id="NameInput" placeholder="Enter Name" />
+      <button id="NameBtn">Enter Name</button>
+    </div>
+
+    <div class="input-group">
+      <input type="text" id="GenderInput" placeholder="Enter Gender (F or M)" />
+      <button id="GenderBtn">Enter Gender</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="AgeInput" placeholder="Enter Age" />
+      <button id="AgeBtn">Enter Age</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="WeightInput" placeholder="Enter Weight" />
+      <button id="WeightBtn">Enter Weight</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="HeightInput" placeholder="Enter Height" />
+      <button id="HeightBtn">Enter Height</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="CalGoalInput" placeholder="Enter Calorie Goal" />
+      <button id="CalGoalBtn">Enter Calorie Goal</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="FatGoalInput" placeholder="Enter Fat Goal" />
+      <button id="FatGoalBtn">Enter Fat Goal</button>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="SodGoalInput" placeholder="Enter Sodium Goal" />
+      <button id="SodGoalBtn">Enter Sodium Goal</button>
+    </div>
+
+    <label for="HealthGoal">Health Goals:</label>
+    <select id="HealthGoal">
+      <option value="calories">Track Calorie Intake</option>
+      <option value="fat">Track Fat Intake</option>
+      <option value="sodium">Track Sodium Intake</option>
+    </select>
+    <br /><br />
+
+    <button id="toHomeBtn">Go to Home Page</button>
+  </section>
+
+  <!-- HOME PAGE -->
+  <main id="homePage" class="hidden">
+    <section id="welcome">
+      <h2>Welcome back!</h2>
+      <p>Here are your goal progressions:</p>
+      <ul>
+        <li>Calories: <span id="totalCal">0</span></li>
+        <li>Nutrition A: --</li>
+        <li>Nutrition B: --</li>
+      </ul>
+    </section>
+
+    <section id="actions">
+      <button id="recordFoodBtn">Record Food</button>
+      <button id="goalBtn">Calorie Goal</button>
+      <button id="editNutritionBtn">Edit Nutrition</button>
+    </section>
+
+    <section id="adviceBox">
+      <h2>Advice / Recommendations</h2>
+      <ul>
+        <li>Drink more water today!</li>
+        <li>Try adding more vegetables to your meals.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <button id="editProfileBtn"> Edit Profile</button>
+      <button id="chatBtn"> Chat with Coach</button>
+      <button id="backToQuestionBtn">Back to Questionnaire</button> <!-- New button -->
+    </footer>
+  </main>
+
+  <!-- RECORD FOOD PAGE -->
+  <section id="recordFood" class="hidden">
+    <h2>Record Food</h2>
+    <label>Food Name: <input type="text" id="foodName" /></label><br />
+    <label>Calorie Content: <input type="number" id="Calorie" /></label><br />
+    <label>Quantity: 
+      <select id="quantity">
+        <option value="1">1 serving</option>
+        <option value="2">2 servings</option>
+        <option value="3">3 servings</option>
+      </select>
+    </label><br />
+    <button id="addCal">Add Calories</button>
+    <button id="backHome1">Home</button>
+  </section>
+
+  <!-- GOAL PAGE -->
+  <section id="goalPage" class="hidden">
+    <h2>Edit Calorie/Nutrition Goals</h2>
+    <label>Goal A: <input type="text" id="goalA" /></label><br />
+    <label>Goal B: <input type="text" id="goalB" /></label><br />
+    <button id="saveGoals">Save</button>
+    <button id="backHome2">Home</button>
+  </section>
+
+  <!-- EDIT PROFILE POPUP -->
+  <div id="editProfilePopup" class="hidden popup">
+    <h2>Edit Profile</h2>
+    <label>Name: <input type="text" id="editName"></label><br />
+    <label>Password: <input type="password" id="editPass"></label><br />
+    <label>Date of Birth: <input type="date" id="editDob"></label><br />
+    <button id="saveProfile">Save</button>
+    <button id="closeProfile">Close</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
