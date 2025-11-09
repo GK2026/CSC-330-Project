@@ -8,7 +8,7 @@ function login() {
 			connection_pool.end();
 		} else { //returns if user and password do match
 			//log in
-			window.location.replace("project.html");//redirects to homepage
+			window.location.replace("code/home.html");//redirects to homepage
 			conection_pool.end();
 	}
 })
