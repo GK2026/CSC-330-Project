@@ -1,102 +1,45 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const message = "This is our prototype";
-  document.querySelector("#header").innerHTML = message;
-  console.log(message);
+  // PAGES -> Mostly redundant, relevant ones moved to questionnaire.js
 
-  // PAGES
-  const questionPage = document.getElementById("question");
-  const homePage = document.getElementById("homePage");
-  const recordFood = document.getElementById("recordFood");
-  const goalPage = document.getElementById("goalPage");
-  const profilePopup = document.getElementById("editProfilePopup");
-
-  // BUTTONS
-  const recordFoodBtn = document.getElementById("recordFoodBtn");
-  const goalBtn = document.getElementById("goalBtn");
-  const editProfileBtn = document.getElementById("editProfileBtn");
-  const backHome1 = document.getElementById("backHome1");
-  const backHome2 = document.getElementById("backHome2");
-  const closeProfile = document.getElementById("closeProfile");
-  const toHomeBtn = document.getElementById("toHomeBtn");
-  const backToQuestionBtn = document.getElementById("backToQuestionBtn");
+  // BUTTONS -> Moved to under navigation
 
   // NAVIGATION
-  recordFoodBtn.addEventListener("click", () => {
-    homePage.classList.add("hidden");
-    recordFood.classList.remove("hidden");
-  });
+ document.addEventListener("DOMContentLoaded", function () {
+    
+    const message = "This is our prototype";
+    document.querySelector("#header").innerHTML = message;
+    console.log(message);
 
-  goalBtn.addEventListener("click", () => {
-    homePage.classList.add("hidden");
-    goalPage.classList.remove("hidden");
-  });
+    const recordFoodBtn = document.getElementById("recordFoodBtn");
+        recordFoodBtn.onclick = function() {
+            location.href = "recordFood.html";
+        };
 
-  backHome1.addEventListener("click", () => {
-    recordFood.classList.add("hidden");
-    homePage.classList.remove("hidden");
-  });
 
-  backHome2.addEventListener("click", () => {
-    goalPage.classList.add("hidden");
-    homePage.classList.remove("hidden");
-  });
+    const goalBtn = document.getElementById("goalBtn");
+    goalBtn.onclick = function() {
+        location.href = "updateGoals.html";
+    };
 
-  editProfileBtn.addEventListener("click", () => {
-    profilePopup.classList.remove("hidden");
-  });
+    const editNutritionBtn = document.getElementById("editNutritionBtn");
+    editNutritionBtn.onclick = function() {
+        location.href = "editList.html";
+    };
 
-  closeProfile.addEventListener("click", () => {
-    profilePopup.classList.add("hidden");
-  });
 
-  // QUESTIONNAIRE PAGE → HOME PAGE
-  toHomeBtn.addEventListener("click", () => {
-    questionPage.classList.add("hidden");
-    homePage.classList.remove("hidden");
-  });
+    const editProfileBtn = document.getElementById("editProfileBtn");
+    editProfileBtn.onclick = function() {
+        location.href = "editProfile.html";
+    };
 
-  // HOME PAGE → QUESTIONNAIRE PAGE
-  backToQuestionBtn.addEventListener("click", () => {
-    homePage.classList.add("hidden");
-    questionPage.classList.remove("hidden");
-  });
+    const chatBtn = document.getElementById("chatBtn");
+    chatBtn.onclick = function() {
+        location.href = "coach.html";
+    };
 
-  // CALORIE TRACKER
-  const addBtn = document.getElementById("addCal");
-  const calInput = document.getElementById("Calorie");
-  const totalDisplay = document.getElementById("totalCal");
-  let totalCalories = 0;
+    const backToQuestionBtn = document.getElementById("backToQuestionBtn");
+    backToQuestionBtn.onclick = function() {
+        location.href = "questionnaire.html";
+    };
 
-  addBtn.addEventListener("click", () => {
-    const calories = Number(calInput.value);
-    if (!isNaN(calories) && calories > 0) {
-      totalCalories += calories;
-      totalDisplay.textContent = totalCalories;
-      calInput.value = "";
-    } else {
-      alert("Please enter a valid calorie number.");
-    }
-  });
 
-  // HELPER FUNCTION FOR INPUT BUTTONS
-  function handleInput(buttonId, inputId, label) {
-    document.getElementById(buttonId).addEventListener("click", function () {
-      const value = document.getElementById(inputId).value;
-    });
-  }
-
-  // Attach handlers to questionnaire buttons
-  handleInput("NameBtn", "NameInput", "Name");
-  handleInput("GenderBtn", "GenderInput", "Gender");
-  handleInput("AgeBtn", "AgeInput", "Age");
-  handleInput("WeightBtn", "WeightInput", "Weight");
-  handleInput("HeightBtn", "HeightInput", "Height");
-  handleInput("CalGoalBtn", "CalGoalInput", "Calorie Goal");
-  handleInput("FatGoalBtn", "FatGoalInput", "Fat Goal");
-  handleInput("SodGoalBtn", "SodGoalInput", "Sodium Goal");
-
-  // Dropdown change
-  document.getElementById("HealthGoal").addEventListener("change", function () {
-    const selected = this.options[this.selectedIndex].text;
-  });
 });
