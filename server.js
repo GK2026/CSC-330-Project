@@ -99,7 +99,7 @@ const server = http.createServer((req, res) => {
   }
 
   let filePath = "." + req.url;
-  if (filePath === "./") filePath = "./html/home.html";
+  if (filePath === "./") filePath = "./code/home.html";
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
