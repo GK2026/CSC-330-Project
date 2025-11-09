@@ -5,7 +5,7 @@ const mysql = require('mysql2');
 
 const server = http.createServer((req, res) => {
   let filePath = "." + req.url;
-  if (filePath === "./") filePath = "./Project.html";
+  if (filePath === "./") filePath = "./html/home.html";
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -37,22 +37,33 @@ const connection_pool = mysql.createPool({
   database: 'userList',
   connectionLimit: 10
 }) // get connected to user database
-function login() {
-	let user = document.getElementById('user');
-	let password = document.getElementById('pass');
-	connection_pool.query('SELECT' + username,password + 'FROM userList', function (error, select_results, fields) {
-		if (error) { //returns if user and password do not match
-			console.log('Username or Password incorrect');
-			connection_pool.end();
-		} else { //returns if user and password do match
-			//log in
-			window.location.replace("project.html");//redirects to homepage
-			conection_pool.end();
+
+// get connected to user database
+// moved from login.js, database code should run through backend (server.js)
+let user = document.getElementById('user');
+let password = document.getElementById('pass');
+connection_pool.query('SELECT' + user,password + 'FROM userList', function (error, select_results, fields) {
+	if (error) { //returns if user and password do not match
+		console.log('Username or Password incorrect');
+		connection_pool.end();
+	} else { //returns if user and password do match
+		//log in
+		console.log('Successfully logged in');
+		conection_pool.end();
 	}
-}
-)};
+});
 
 
+// moved from signup.js
+connection_pool.query("INSERT INTO userList (username, password) VALUES ('"+ user +"','" +password+"');", function (error, insert_results, fields) {
+	if (error) {
+		console.log(error);
+		connection_pool.end();
+	} else {
+		console.log("Sign in successful")
+		connection_pool.end();
+	}
+});
 
 server.listen(80, () => {
   console.log("Server running on port 80");
