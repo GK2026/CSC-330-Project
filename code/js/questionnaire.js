@@ -28,7 +28,7 @@
   */
 
 document.getElementById("toHomeBtn").addEventListener("click", async () => {
-  
+
   const data = {
     name: document.getElementById("NameInput").value,
     gender: document.getElementById("GenderInput").value,
@@ -46,4 +46,6 @@ document.getElementById("toHomeBtn").addEventListener("click", async () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   });
+
+  location.href = "home.html";
 });
