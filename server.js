@@ -97,6 +97,34 @@ const server = http.createServer((req, res) => {
       );
     });
   }
+  
+  //post method for /questionnaire
+  if (req.method == "POST" && pathname == "/questionnaire") {
+    return read(req, function (data) {
+      let username = "Jane Doe"; //hardcoded for now
+      let name = data.name;
+      let gender = data.gender;
+      let age = data.age;
+      let weight = data.weight;
+      let height = data.height;
+      let calorieGoal = data.calorieGoal;
+      let fatGoal = data.fatGoal;
+      let sodiumGoal = data.sodiumGoal;
+      let healthGoal = data.healthGoal;
+
+    connection_pool.query(
+      "UPDATE users SET name=?, gender=?, age=?, weight=?, height=?, calorieGoal=?, fatGoal=?, sodiumGoal=?, healthGoal=? WHERE username=?",
+      [name, gender, age, weight, height, calorieGoal, fatGoal, sodiumGoal, healthGoal, username],
+      function (err, result) {
+        if (err) {
+          send(res, 400, { isFunctional: false, error: err.message });
+        } else {
+          send(res, 200, { isFunctional: true, message: "saved to db" });
+        }
+      }
+    );
+    });
+}
 
   let filePath = "." + req.url;
   if (filePath === "./") filePath = "./code/home.html";
