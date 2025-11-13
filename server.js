@@ -2,10 +2,132 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
+const url = require("url");
 
+//browser server comm - send json
+function send(res, code, msg) {
+  res.writeHead(code, {"Content-Type":"application/json"});
+  res.end(JSON.stringify(msg));
+}
+
+//browser server comm - read
+function read(req, callback) {
+  let data = "";
+  req.on("data", chunk => data += chunk);
+  req.on("end", () => {
+    let jsonObj = {};
+    if (data) jsonObj = JSON.parse(data);
+    callback(jsonObj);
+  });
+}
+
+//established connection to GCP mySQL
+const connection_pool = mysql.createPool({
+  host: '34.148.250.171',
+  user: 'csc330',
+  password: 'ProjectMySQL2025!',
+  database: 'userList',
+  connectionLimit: 10
+
+})
+
+
+// Relocated all the mySQL code in our project to here since it should be in our backend (e.g. login and signup.js files are frontend)
+// Relocate or deleted mySQL code depending on redundacy
 const server = http.createServer((req, res) => {
+  const parse = url.parse(req.url, true);
+  const pathname = parse.pathname;
+
+  // POST method, client side will access the database through /signup
+  // Checks for available username, and if available, inserts the username and password into the database
+  // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
+  if (req.method == "POST" && pathname == "/signup") {
+    return read(req, function (data) {
+      const username = data.username;
+      const password = data.password;
+
+      connection_pool.query(
+        "SELECT id FROM userList WHERE username=?",
+        [username],
+        function (err, results) { // retrieving mySQL's response to determine what to do with the data
+          if (err) {
+            send(res, 400, { isFunctional: false, error: err.message });
+          } else if (results.length > 0) {
+            send(res, 400, { isFunctional: false, error: "Username taken" });
+          } else {
+            connection_pool.query(
+              "INSERT INTO userList (username, password) VALUES (?, ?)",
+              [username, password],
+              function (err2) {
+                if (err2) {
+                  send(res, 400, { isFunctional: false, error: err2.message });
+                } else {
+                  send(res, 200, { isFunctional: true, message: "Signup successful" });
+                }
+                // Removed the ending of the connection_pool
+              }
+            );
+          }
+        }
+      );
+    });
+  }
+
+  // POST method, client side will access the database through /login
+  // Checks if a specific username and password combo exists via the length of results, and if it exists it will return "isFunctional: true", and the corresponding userID
+  // Otherwise will send a 400 error
+  if (req.method == "POST" && pathname == "/login") {
+    return read(req, function (data) {
+      const username = data.username;
+      const password = data.password;
+
+      connection_pool.query(
+        "SELECT id FROM userList WHERE username=? AND password=?",
+        [username, password],
+        function (err, results) {
+          if (err) {
+            send(res, 400, { isFunctional: false, error: err.message });
+          } else if (results.length > 0) {
+            send(res, 200, { isFunctional: true, userId: results[0].id });
+          } else {
+            send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
+          }
+          // Removed the ending of the connection_pool
+        }
+      );
+    });
+  }
+  
+  //post method for /questionnaire
+  if (req.method == "POST" && pathname == "/questionnaire") {
+    return read(req, function (data) {
+      let username = "Jane Doe"; //hardcoded for now
+      let name = data.name;
+      let gender = data.gender;
+      let age = data.age;
+      let weight = data.weight;
+      let height = data.height;
+      let calorieGoal = data.calorieGoal;
+      let fatGoal = data.fatGoal;
+      let sodiumGoal = data.sodiumGoal;
+      let healthGoal = data.healthGoal;
+
+    connection_pool.query(
+      "UPDATE users SET name=?, gender=?, age=?, weight=?, height=?, calorieGoal=?, fatGoal=?, sodiumGoal=?, healthGoal=? WHERE username=?",
+      [name, gender, age, weight, height, calorieGoal, fatGoal, sodiumGoal, healthGoal, username],
+      function (err, result) {
+        if (err) {
+          send(res, 400, { isFunctional: false, error: err.message });
+        } else {
+          send(res, 200, { isFunctional: true, message: "saved to db" });
+        }
+      }
+    );
+    });
+}
+
   let filePath = "." + req.url;
-  if (filePath === "./") filePath = "./Project.html";
+  if (filePath === "./") filePath = "./code/home.html";
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -29,30 +151,10 @@ const server = http.createServer((req, res) => {
     }
   });
 });
-//mySQL related code goes here
-const connection_pool = mysql.createPool({
-  host: '34.148.250.171',
-  user: 'csc330',
-  password: 'ProjectMySQL2025!',
-  database: 'userList',
-  connectionLimit: 10
-}) // get connected to user database
-function login() {
-	let user = document.getElementById('user');
-	let password = document.getElementById('pass');
-	connection_pool.query('SELECT' + username,password + 'FROM userList', function (error, select_results, fields) {
-		if (error) { //returns if user and password do not match
-			console.log('Username or Password incorrect');
-			connection_pool.end();
-		} else { //returns if user and password do match
-			//log in
-			window.location.replace("project.html");//redirects to homepage
-			conection_pool.end();
-	}
-}
-)};
 
-
+// get connected to user database
+// moved from login.js, database code should run through backend (server.js)
+// moved from signup.js
 
 server.listen(80, () => {
   console.log("Server running on port 80");

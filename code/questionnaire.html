@@ -3,42 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="src/style.css" />
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        margin: 50px;
-      }
-
-      h1 {
-        font-size: 28px;
-      }
-
-      .input-group {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-      }
-
-      input {
-        padding: 10px;
-        font-size: 16px;
-        width: 200px;
-      }
-
-      button {
-        padding: 5px 10px;
-        font-size: 14px;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="css/questionnaire.css" />
   </head>
   <body>
-    <h1>Welcome to Daily Diet</h1>
+    
+   <!-- QUESTIONNAIRE PAGE -->
+  <section id="question">
+    <h2>Welcome to Daily Diet Questionnaire</h2>
 
     <div class="input-group">
       <input type="text" id="NameInput" placeholder="Enter Name" />
@@ -80,13 +51,18 @@
       <button id="SodGoalBtn">Enter Sodium Goal</button>
     </div>
 
-    <label for="HealthGoal">Health Goals</label>
+    <label for="HealthGoal">Health Goals:</label>
     <select id="HealthGoal">
       <option value="calories">Track Calorie Intake</option>
       <option value="fat">Track Fat Intake</option>
       <option value="sodium">Track Sodium Intake</option>
     </select>
+    <br /><br />
 
-    <script src="script.js"></script>
+    <button id="toHomeBtn">Go to Home Page</button>
+  </section>
+
+
+    <script src="js/questionnaire.js"></script>
   </body>
 </html>
