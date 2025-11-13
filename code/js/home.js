@@ -5,7 +5,7 @@
   // NAVIGATION
  document.addEventListener("DOMContentLoaded", function () {
     
-    const message = "This is our prototype";
+    const message = "This is Daily Diet";
     document.querySelector("#header").innerHTML = message;
     console.log(message);
 
