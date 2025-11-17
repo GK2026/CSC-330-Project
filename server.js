@@ -38,6 +38,14 @@ const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
   const pathname = parse.pathname;
 
+
+//!!!!IMPORTANT!!!! please run 'npm install express' without the quotes in the git terminal
+//This allows an app called express to serve static files to the server
+//The solution comes from https://www.geeksforgeeks.org/node-js/how-to-serve-static-content-using-node-js/
+let app = express();
+app.use(express.static(path.join(__dirname, 'code')));
+
+
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
@@ -156,6 +164,6 @@ const server = http.createServer((req, res) => {
 // moved from login.js, database code should run through backend (server.js)
 // moved from signup.js
 
-server.listen(80, () => {
+server.listen(8080, () => {
   console.log("Server running on port 80");
 });
