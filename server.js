@@ -125,8 +125,9 @@ const server = http.createServer((req, res) => {
     );
     });
 }
-  //this directs the server to load files from the "code" folder
-  let filePath = "./code" + url.parse(req.url).pathname;
+
+  let filePath = "." + url.parse;
+  if (filePath === "./") filePath = "./code/home.html";
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
