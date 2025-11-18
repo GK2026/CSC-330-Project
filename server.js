@@ -126,7 +126,7 @@ const server = http.createServer((req, res) => {
     });
 }
 
-  let filePath = "." + url.parse;
+  let filePath = "." + url.parse(req.url).pathname;
   if (filePath === "./") filePath = "./code/home.html";
 
   // Determine content type
