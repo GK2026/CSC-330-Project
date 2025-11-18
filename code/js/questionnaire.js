@@ -29,23 +29,44 @@
 
 document.getElementById("toHomeBtn").addEventListener("click", async () => {
 
+
+
   const data = {
+
     name: document.getElementById("NameInput").value,
+
     gender: document.getElementById("GenderInput").value,
+
     age: document.getElementById("AgeInput").value,
+
     weight: document.getElementById("WeightInput").value,
+
     height: document.getElementById("HeightInput").value,
+
     calorieGoal: document.getElementById("CalGoalInput").value,
+
     fatGoal: document.getElementById("FatGoalInput").value,
+
     sodiumGoal: document.getElementById("SodGoalInput").value,
+
     healthGoal: document.getElementById("HealthGoal").value
+
   };
 
+
+
   const res = await fetch("/questionnaire", {
+
     method: "POST",
+
     headers: { "Content-Type": "application/json" },
+
     body: JSON.stringify(data)
+
   });
 
-location.href = "./home.html";
+
+
+location.href = "/code/home.html";
+
 });
