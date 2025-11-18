@@ -38,7 +38,7 @@
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
     backToQuestionBtn.onclick = function() {
-        location.href = "code/questionnaire.html";
+        location.href = "questionnaire.html";
     };
 
 
