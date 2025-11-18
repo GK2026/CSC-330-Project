@@ -47,5 +47,5 @@ document.getElementById("toHomeBtn").addEventListener("click", async () => {
     body: JSON.stringify(data)
   });
 
-  location.href = "home.html";
+location.href = "./home.html";
 });

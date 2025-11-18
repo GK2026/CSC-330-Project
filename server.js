@@ -38,10 +38,6 @@ const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
   const pathname = parse.pathname;
 
-  //!!!!Please run npm install express in the terminal, the code will not work if you don't!
-  //This code allows and app called express to serve static files to the server
-  let app = express();
-  app.use(express.static(path.join(__dirname, 'code')));
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
