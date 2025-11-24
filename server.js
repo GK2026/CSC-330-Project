@@ -4,6 +4,7 @@ const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
 const express = require("express");
+const app = express();
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -126,8 +127,9 @@ const server = http.createServer((req, res) => {
     });
 }
 
-  let filePath = "." + url.parse(req.url).pathname;
-  if (!(filePath.includes("./code/"))) filePath = "./code/index.html";
+  /*let filePath = "." + url.parse(req.url).pathname;
+  if (!(filePath.includes("./code/"))) filePath = "./code/home.html";*/
+  app.use(express.static(path.join(__dirname, 'code')));
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
