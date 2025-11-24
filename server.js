@@ -132,7 +132,7 @@ const server = http.createServer((req, res) => {
   app.use(express.static(path.join(__dirname, 'code')));
 
   // Determine content type
-  const extname = String(path.extname(filePath)).toLowerCase();
+  //const extname = String(path.extname(filePath)).toLowerCase();
   const mimeTypes = {
     ".html": "text/html",
     ".js": "text/javascript",
