@@ -126,7 +126,8 @@ const server = http.createServer((req, res) => {
     );
     });
 }
-  let filePath = app.use(express.static("code"));
+  let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
+
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
   const mimeTypes = {
