@@ -127,7 +127,7 @@ const server = http.createServer((req, res) => {
 }
 
   let filePath = "." + url.parse(req.url).pathname;
-  if (!(filePath.includes("./code/"))) filePath = "./code/home.html";
+  if (!(filePath.includes("./public_index/"))) filePath = "./public_index/index.html";
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
