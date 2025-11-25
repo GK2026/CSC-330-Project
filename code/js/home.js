@@ -11,34 +11,34 @@
 
     const recordFoodBtn = document.getElementById("recordFoodBtn");
         recordFoodBtn.onclick = function() {
-            location.href = "code/recordFood.html";
+            location.href = "recordFood.html";
         };
 
 
     const goalBtn = document.getElementById("goalBtn");
     goalBtn.onclick = function() {
-        location.href = "code/updateGoals.html";
+        location.href = "updateGoals.html";
     };
 
     const editNutritionBtn = document.getElementById("editNutritionBtn");
     editNutritionBtn.onclick = function() {
-        location.href = "code/editList.html";
+        location.href = "editList.html";
     };
 
 
     const editProfileBtn = document.getElementById("editProfileBtn");
     editProfileBtn.onclick = function() {
-        location.href = "code/editProfile.html";
+        location.href = "editProfile.html";
     };
 
     const chatBtn = document.getElementById("chatBtn");
     chatBtn.onclick = function() {
-        location.href = "code/coach.html";
+        location.href = "coach.html";
     };
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
     backToQuestionBtn.onclick = function() {
-        location.href = "code/questionnaire.html";
+        location.href = "questionnaire.html";
     };
 
 

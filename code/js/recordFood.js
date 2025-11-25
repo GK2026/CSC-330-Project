@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
   // CALORIE TRACKER
   const addBtn = document.getElementById("addCal");
   const calInput = document.getElementById("Calorie");
@@ -14,3 +15,10 @@
       alert("Please enter a valid calorie number.");
     }
   });
+
+  // Redirect Home button to home.html
+  const homeBtn = document.getElementById("backHome1");
+  homeBtn.addEventListener("click", () => {
+    window.location.href = "home.html"; // adjust path if needed
+  });
+});
