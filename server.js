@@ -4,7 +4,6 @@ const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
 const express = require("express");
-const app = express();
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -43,7 +42,7 @@ const server = http.createServer((req, res) => {
 //!!!!IMPORTANT!!!! please run 'npm install express' without the quotes in the git terminal
 //This allows an app called express to serve static files to the server
 //The solution comes from https://www.geeksforgeeks.org/node-js/how-to-serve-static-content-using-node-js/
-let app = express();
+const app = express();
 app.use(express.static(path.join(__dirname, 'code')));
 
 
