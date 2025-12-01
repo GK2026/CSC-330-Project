@@ -2,6 +2,7 @@
 let signUpSect = document.getElementById('signUp');
 let loginSect = document.getElementById('login');
 signUpSect.style.display = 'none';
+loginSect.style.display = 'block';
 signUpSect.onclick(function signup() {
 	signUpSect.display = 'block';
 	loginSect.display = 'none';	
