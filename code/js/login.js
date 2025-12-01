@@ -1,13 +1,7 @@
 //function moved from server.js
-let signUpSect = document.getElementById('signUp');
-let loginSect = document.getElementById('login');
-signUpSect.style.display = 'none';
-loginSect.style.display = 'block';
-signUpSect.onclick(function signup() {
-	signUpSect.display = 'block';
-	loginSect.display = 'none';	
-})
-	
+document.getElementById('signUp').addEventListener('click', function() {
+	window.location.pathname = '../signup.html'; //redirects to signup page
+});
 function login() {
 	let user = document.getElementById('user');
 	let password = document.getElementById('pass');
