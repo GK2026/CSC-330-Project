@@ -1,4 +1,12 @@
 //function moved from server.js
+let signUpSect = document.getElementById('signUp');
+let loginSect = document.getElementById('login');
+signUpSect.style.display = 'none';
+signUpSect.onclick(function signup() {
+	signUpSect.display = 'block';
+	loginSect.display = 'none';	
+})
+	
 function login() {
 	let user = document.getElementById('user');
 	let password = document.getElementById('pass');
@@ -8,7 +16,7 @@ function login() {
 			connection_pool.end();
 		} else { //returns if user and password do match
 			//log in
-			window.location.replace("code/home.html");//redirects to homepage
+			window.location.pathname = '../home.html'; //redirects to homepage
 			conection_pool.end();
 	}
 })
