@@ -39,14 +39,6 @@ const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
   const pathname = parse.pathname;
 
-
-//!!!!IMPORTANT!!!! please run 'npm install express' without the quotes in the git terminal
-//This allows an app called express to serve static files to the server
-//The solution comes from https://www.geeksforgeeks.org/node-js/how-to-serve-static-content-using-node-js/
-let app = express();
-app.use(express.static(path.join(__dirname, 'code')));
-
-
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
@@ -134,8 +126,11 @@ app.use(express.static(path.join(__dirname, 'code')));
     );
     });
 }
+  //uses express to allow server to grab and process static files
   let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
   app.use(express.static(filePath));
+  //app.use just tells the server that it will be using the files inside the parathesis
+  //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
   // Determine content type
   const extname = String(path.extname(filePath)).toLowerCase();
