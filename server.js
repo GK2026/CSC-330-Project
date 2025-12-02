@@ -164,6 +164,6 @@ app.use(express.static(path.join(__dirname, 'code')));
 // moved from login.js, database code should run through backend (server.js)
 // moved from signup.js
 
-server.listen(8080, () => {
+server.listen(80, () => {
   console.log("Server running on port 80");
 });
