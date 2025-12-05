@@ -3,8 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
-const express = require("express");
-const app = express();
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -48,7 +46,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM userList WHERE username=?",
+        "SELECT username FROM users WHERE username=?",
         [username],
         function (err, results) { // retrieving mySQL's response to determine what to do with the data
           if (err) {
@@ -57,7 +55,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: "Username taken" });
           } else {
             connection_pool.query(
-              "INSERT INTO userList (username, password) VALUES (?, ?)",
+              "INSERT INTO users (username, password) VALUES (?, ?)",
               [username, password],
               function (err2) {
                 if (err2) {
@@ -83,7 +81,7 @@ const server = http.createServer((req, res) => {
       const password = data.pass;
 
       connection_pool.query(
-        "SELECT id FROM userList WHERE username=? AND password=?",
+        "SELECT id FROM users WHERE username=? AND password=?",
         [username, password],
         function (err, results) {
           if (err) {
@@ -129,7 +127,6 @@ const server = http.createServer((req, res) => {
 }
   //uses express to allow server to grab and process static files
   let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
-  app.use(express.static(filePath));
   //app.use just tells the server that it will be using the files inside the parathesis
   //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
