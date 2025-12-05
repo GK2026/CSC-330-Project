@@ -3,8 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
-const express = require("express");
-const app = express();
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -128,7 +126,6 @@ const server = http.createServer((req, res) => {
 }
   //uses express to allow server to grab and process static files
   let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
-  app.use(express.static(filePath));
   //app.use just tells the server that it will be using the files inside the parathesis
   //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
