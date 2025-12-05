@@ -1,4 +1,10 @@
 //function moved from server.js
+document.getElementById('signUp').addEventListener('click', function() {
+	window.location.pathname = '../signup.html'; //redirects to signup page
+});
+document.getElementById('questDirect').addEventListener('click', function() {
+	window.location.pathname ='../questionaire.html'; //sends user to questionaire upon signup
+});
 function login() {
 	let user = document.getElementById('user');
 	let password = document.getElementById('pass');
@@ -8,7 +14,7 @@ function login() {
 			connection_pool.end();
 		} else { //returns if user and password do match
 			//log in
-			window.location.replace("code/home.html");//redirects to homepage
+			window.location.pathname = '../home.html'; //redirects to homepage
 			conection_pool.end();
 	}
 })
