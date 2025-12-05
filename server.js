@@ -90,6 +90,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: err.message });
           } else if (results.length > 0) {
             send(res, 200, { isFunctional: true, userId: results[0].id });
+            console.log("Login successful");
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
