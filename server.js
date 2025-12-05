@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
-  if (req.method == "POST" && pathname == "/code/signup.html") {
+  if (req.method == "POST" && pathname == "/signup") {
     return read(req, function (data) {
       const username = data.username;
       const password = data.password;
