@@ -1,45 +1,39 @@
-  // PAGES -> Mostly redundant, relevant ones moved to questionnaire.js
+document.addEventListener("DOMContentLoaded", function () {
 
-  // BUTTONS -> Moved to under navigation
+    // Get the span where total calories are displayed
+    const totalCalDisplay = document.getElementById("totalCal");
 
-  // NAVIGATION
- document.addEventListener("DOMContentLoaded", function () {
-    
-    const message = "This is Daily Diet";
-    document.querySelector("#header").innerHTML = message;
-    console.log(message);
+    // Load total calories from sessionStorage (starts at 0 if nothing is stored)
+    const savedTotal = Number(sessionStorage.getItem("totalCalories")) || 0;
 
+    // Display the total
+    if (totalCalDisplay) {
+        totalCalDisplay.textContent = savedTotal;
+    }
+
+    // Header
+    const header = document.querySelector("#header");
+    if (header) {
+        header.innerHTML = "This is Daily Diet";
+    }
+
+    // NAVIGATION BUTTONS
     const recordFoodBtn = document.getElementById("recordFoodBtn");
-        recordFoodBtn.onclick = function() {
-            location.href = "recordFood.html";
-        };
-
+    if (recordFoodBtn) recordFoodBtn.onclick = () => location.href = "recordFood.html";
 
     const goalBtn = document.getElementById("goalBtn");
-    goalBtn.onclick = function() {
-        location.href = "updateGoals.html";
-    };
+    if (goalBtn) goalBtn.onclick = () => location.href = "updateGoals.html";
 
     const editNutritionBtn = document.getElementById("editNutritionBtn");
-    editNutritionBtn.onclick = function() {
-        location.href = "editList.html";
-    };
-
+    if (editNutritionBtn) editNutritionBtn.onclick = () => location.href = "editList.html";
 
     const editProfileBtn = document.getElementById("editProfileBtn");
-    editProfileBtn.onclick = function() {
-        location.href = "editProfile.html";
-    };
+    if (editProfileBtn) editProfileBtn.onclick = () => location.href = "editProfile.html";
 
     const chatBtn = document.getElementById("chatBtn");
-    chatBtn.onclick = function() {
-        location.href = "coach.html";
-    };
+    if (chatBtn) chatBtn.onclick = () => location.href = "coach.html";
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
-    backToQuestionBtn.onclick = function() {
-        location.href = "questionnaire.html";
-    };
-
+    if (backToQuestionBtn) backToQuestionBtn.onclick = () => location.href = "questionnaire.html";
 
 });

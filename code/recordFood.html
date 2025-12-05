@@ -1,29 +1,43 @@
-  <!-- RECORD FOOD PAGE -->
+<!-- RECORD FOOD PAGE -->
 <!DOCTYPE html>
 
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Record your Food</title>
   <link rel="stylesheet" href="css/recordFood.css" />
 </head>
+
 <body>
   <h2>Record Food</h2>
-  <label>Food Name: <input type="text" id="foodName" /></label><br />
-  <label>Calorie Content: <input type="number" id="Calorie" /></label><br />
-  <label>Quantity: 
-  <select id="quantity">
+
+  <label>
+    Food Name:
+    <input type="text" id="foodName" />
+  </label>
+  <br />
+
+  <label>
+    Calorie Content:
+    <input type="number" id="Calorie" />
+  </label>
+  <br />
+
+  <label>
+    Quantity:
+    <select id="quantity">
       <option value="1">1 serving</option>
       <option value="2">2 servings</option>
       <option value="3">3 servings</option>
-  </select>
-  </label><br />
+    </select>
+  </label>
+  <br />
+
   <button id="addCal">Add Calories</button>
   <button id="backHome1">Home</button>
-</body>
-</html>
-    <script src="js/recordFood.js"></script>
+
+  <!-- Link JS correctly -->
+  <script src="js/recordFood.js"></script>
 </body>
 </html>
