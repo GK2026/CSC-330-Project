@@ -46,7 +46,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM userList WHERE username=?",
+        "SELECT id FROM users WHERE username=?",
         [username],
         function (err, results) { // retrieving mySQL's response to determine what to do with the data
           if (err) {
@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM userList WHERE username=? AND password=?",
+        "SELECT id FROM users WHERE username=? AND password=?",
         [username, password],
         function (err, results) {
           if (err) {
