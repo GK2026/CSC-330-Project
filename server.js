@@ -127,32 +127,10 @@ const server = http.createServer((req, res) => {
     });
 }
   //uses express to allow server to grab and process static files
-  let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
-  app.use(express.static(filePath));
+  app.use(express.static(__dirname, "code"));
   //app.use just tells the server that it will be using the files inside the parathesis
   //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
-  // Determine content type
-  const extname = String(path.extname(filePath)).toLowerCase();
-  const mimeTypes = {
-    ".html": "text/html",
-    ".js": "text/javascript",
-    ".css": "text/css",
-    ".json": "application/json",
-    ".png": "image/png",
-    ".jpg": "image/jpg",
-  };
-  const contentType = mimeTypes[extname] || "application/octet-stream";
-
-  fs.readFile(filePath, (err, content) => {
-    if (err) {
-      res.writeHead(404, { "Content-Type": "text/plain" });
-      res.end("404 Not Found");
-    } else {
-      res.writeHead(200, { "Content-Type": contentType });
-      res.end(content, "utf-8");
-    }
-  });
 });
 
 // get connected to user database
