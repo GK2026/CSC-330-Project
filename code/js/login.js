@@ -6,6 +6,7 @@ let user = document.getElementsByName('user');
 let pass = document.getElementsByName('pass');
 document.getElementById('loginBtn').addEventListener('click', function() {
 	xmlhttp.open("POST", "/login.js", true);
-	xmlhttp.send(user, pass);
+	xmlhttp.send(JSON.stringify(user), JSON.stringify(pass));
 });
+
 // ALL SQL CODE MOVED TO server.js, they should be backend, not here
