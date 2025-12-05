@@ -6,4 +6,5 @@ document.getElementById('loginBtn').addEventListener('click', function() {
 	xmlhttp.open("POST", "/login", true);
 	xmlhttp.setRequestHeader("Content-Type", "text/plain");
 	xmlhttp.send();
+});
 // ALL SQL CODE MOVED TO server.js, they should be backend, not here
