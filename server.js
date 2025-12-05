@@ -6,6 +6,8 @@ const url = require("url");
 const express = require("express");
 const app = express();
 
+app.use(express.static(path.join(__dirname, "code")));
+
 //browser server comm - send json
 function send(res, code, msg) {
   res.writeHead(code, {"Content-Type":"application/json"});
@@ -127,7 +129,6 @@ const server = http.createServer((req, res) => {
     });
 }
   //uses express to allow server to grab and process static files
-  app.use(express.static(__dirname, "code"));
   //app.use just tells the server that it will be using the files inside the parathesis
   //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
