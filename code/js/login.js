@@ -5,7 +5,7 @@ document.getElementById('signUp').addEventListener('click', function() {
 let user = document.getElementsByName('user');
 let pass = document.getElementsByName('pass');
 document.getElementById('loginBtn').addEventListener('click', function() {
-	xmlhttp.open("POST", "/login.js", true);
+	xmlhttp.open("POST", "/login.html", true);
 	xmlhttp.send(JSON.stringify(user), JSON.stringify(pass));
 });
 
