@@ -55,7 +55,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: "Username taken" });
           } else {
             connection_pool.query(
-              "INSERT INTO userList (username, password) VALUES (?, ?)",
+              "INSERT INTO users (username, password) VALUES (?, ?)",
               [username, password],
               function (err2) {
                 if (err2) {
