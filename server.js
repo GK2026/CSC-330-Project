@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS
-  if (req.method == "POST" && pathname == "/code/signup") {
+  if (req.method == "POST" && pathname == "/code/signup.html") {
     return read(req, function (data) {
       const username = data.username;
       const password = data.password;
@@ -77,7 +77,7 @@ const server = http.createServer((req, res) => {
   // POST method, client side will access the database through /login
   // Checks if a specific username and password combo exists via the length of results, and if it exists it will return "isFunctional: true", and the corresponding userID
   // Otherwise will send a 400 error
-  if (req.method == "POST" && pathname == "/code/login") {
+  if (req.method == "POST" && pathname == "/login") {
     return read(req, function (data) {
       const username = data.username;
       const password = data.password;
@@ -100,7 +100,7 @@ const server = http.createServer((req, res) => {
   }
   
   //post method for /questionnaire
-  if (req.method == "POST" && pathname == "/code/questionnaire") {
+  if (req.method == "POST" && pathname == "/questionnaire") {
     return read(req, function (data) {
       let username = "Jane Doe"; //hardcoded for now
       let name = data.name;
