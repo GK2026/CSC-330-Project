@@ -5,7 +5,7 @@ document.getElementById('signUp').addEventListener('click', function() {
 let user = document.getElementsByName('user');
 let pass = document.getElementsByName('pass');
 document.getElementById('loginBtn').addEventListener('click', function() {
-	xmlhttp.open("POST", "/code/login.html", true);
+	xmlhttp.open("POST", "/login.html", true);
 	xmlhttp.send(user, pass);
 });
 // ALL SQL CODE MOVED TO server.js, they should be backend, not here
