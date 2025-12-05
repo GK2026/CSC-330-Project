@@ -48,7 +48,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM userList WHERE username=?",
+        "SELECT id FROM users WHERE username=?",
         [username],
         function (err, results) { // retrieving mySQL's response to determine what to do with the data
           if (err) {
@@ -57,7 +57,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: "Username taken" });
           } else {
             connection_pool.query(
-              "INSERT INTO userList (username, password) VALUES (?, ?)",
+              "INSERT INTO users (username, password) VALUES (?, ?)",
               [username, password],
               function (err2) {
                 if (err2) {
