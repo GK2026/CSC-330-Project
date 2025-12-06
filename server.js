@@ -39,6 +39,11 @@ const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
   const pathname = parse.pathname;
 
+  if (req.method == "GET" && pathname == "/currentUser") {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    return res.end(JSON.stringify({user: currentUser}));
+  }
+
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
   // NOT FULLY FUNCTIONAL WITH THE JS AND HTML FILES, WORK IN PROGRESS

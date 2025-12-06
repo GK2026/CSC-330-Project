@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    fetch('/currentUser')
+
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");
 
