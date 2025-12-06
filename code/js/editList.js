@@ -9,8 +9,7 @@ document.getElementById("submit").addEventListener("click", async () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
-
-    })
+    });
         if (res.ok) {
             alert("Goals Updated");
         }

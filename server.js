@@ -98,7 +98,7 @@ const server = http.createServer((req, res) => {
     });
   }
   //post method for /editList, just for updating nutrition goals
-  if (req.method =="POST" && pathname =="/editList"){
+  if (req.method =="POST" && pathname == "/editList"){
     return read (req, function (data) {
       let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
       let fatGoal =data.fat;
