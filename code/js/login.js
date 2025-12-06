@@ -2,8 +2,7 @@
 document.getElementById('signUp').addEventListener('click', function() {
 	window.location.pathname = '../signup.html'; //redirects to signup page
 });
-// document.getElementById('questDirect').addEventListener('click', function() {
-// 	window.location.pathname ='../questionaire.html'; //sends user to questionaire upon signup
+
 // });
 // function login() {
 // 	let user = document.getElementById('user');
