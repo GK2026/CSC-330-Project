@@ -97,6 +97,26 @@ const server = http.createServer((req, res) => {
       );
     });
   }
+  //post method for /editList, just for updating nutrition goals
+  if (req.method =="POST" && pathname =="/editList"){
+    return read (req, function (data) {
+      let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
+      let fatGoal =data.fat;
+      let sodiumGoal =data.sodium;
+      connection_pool.query(
+        "UPDATE users SET fatGoal=?, sodiumGoal=? WHERE username=?",
+        [fatGoal, sodiumGoal, username], 
+        function (err, result) {
+          if (err) {
+            send (res, 400, {isFunctional: false, error: err.message});
+          }
+          else {
+            send (res, 200, {isFunctional: true, message: "Update Successful!"})
+          }
+        }
+      );
+    });
+  }
   
   //post method for /questionnaire
   if (req.method == "POST" && pathname == "/questionnaire") {
