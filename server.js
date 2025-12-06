@@ -75,7 +75,7 @@ const server = http.createServer((req, res) => {
   // POST method, client side will access the database through /login
   // Checks if a specific username and password combo exists via the length of results, and if it exists it will return "isFunctional: true", and the corresponding userID
   // Otherwise will send a 400 error
-  if (req.method == "POST" && pathname == "/login.html") {
+  if (req.method == "POST" && pathname == "/login") {
     return read(req, function (data) {
       const username = data.user;
       const password = data.pass;
@@ -111,7 +111,7 @@ const server = http.createServer((req, res) => {
             send (res, 400, {isFunctional: false, error: err.message});
           }
           else {
-            send (res, 200, {isFunctional: true, message: "Update Successful!"})
+            send (res, 200, {isFunctional: true, message: "Update Successful!"});
           }
         }
       );
