@@ -33,9 +33,12 @@ const connection_pool = mysql.createPool({
 
 // Relocated all the mySQL code in our project to here since it should be in our backend (e.g. login and signup.js files are frontend)
 // Relocate or deleted mySQL code depending on redundacy
+
+
 const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
-  const pathname = parse.pathname;
+  const pathname = parse.pathname; 
+
 
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
@@ -176,6 +179,21 @@ const server = http.createServer((req, res) => {
 // get connected to user database
 // moved from login.js, database code should run through backend (server.js)
 // moved from signup.js
+
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+io.on("connection", (socket) => {
+  console.log("User connected:", socket.id);
+
+  socket.on("chatMessage", (msg) => {
+    io.emit("chatMessage", msg);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected:", socket.id);
+  });
+});
 
 server.listen(80, () => {
   console.log("Server running on port 80");
