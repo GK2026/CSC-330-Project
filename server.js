@@ -4,6 +4,8 @@ const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
 
+//let currentUser = 
+
 //browser server comm - send json
 function send(res, code, msg) {
   res.writeHead(code, {"Content-Type":"application/json"});
@@ -159,3 +161,4 @@ const server = http.createServer((req, res) => {
 server.listen(80, () => {
   console.log("Server running on port 80");
 });
+
