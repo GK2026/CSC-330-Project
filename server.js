@@ -4,8 +4,6 @@ const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
 
-//let currentUser = 
-
 //browser server comm - send json
 function send(res, code, msg) {
   res.writeHead(code, {"Content-Type":"application/json"});
@@ -32,6 +30,8 @@ const connection_pool = mysql.createPool({
   connectionLimit: 10
 
 })
+
+let currentUser = null;
 
 // Relocated all the mySQL code in our project to here since it should be in our backend (e.g. login and signup.js files are frontend)
 // Relocate or deleted mySQL code depending on redundacy
@@ -64,6 +64,7 @@ const server = http.createServer((req, res) => {
                   send(res, 400, { isFunctional: false, error: err2.message });
                 } else {
                   send(res, 200, { isFunctional: true, message: "Signup successful" });
+                  currentUser = username;
                 }
                 // Removed the ending of the connection_pool
               }
@@ -90,6 +91,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: err.message });
           } else if (results.length > 0) {
             send(res, 200, { isFunctional: true, userId: results[0].username });
+            currentUser = username;
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
@@ -102,7 +104,7 @@ const server = http.createServer((req, res) => {
   //post method for /questionnaire
   if (req.method == "POST" && pathname == "/questionnaire") {
     return read(req, function (data) {
-      let username = "Jane Doe"; //hardcoded for now
+      let username = currentUser;
       let name = data.name;
       let gender = data.gender;
       let age = data.age;
