@@ -81,7 +81,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM users WHERE username=? AND password=?",
+        "SELECT username FROM users WHERE username=? AND password=?",
         [username, password],
         function (err, results) {
           if (err) {
