@@ -1,5 +1,10 @@
 
-
+img {
+  padding: 28px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 section {
   background: #ffffff;
   border: none;
