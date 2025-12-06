@@ -1,3 +1,7 @@
+document.getElementById('returnLogin').addEventListener('click', function() {
+	window.location.pathname = '../login.html'; //redirects to login page
+});
+
 document.getElementById("questDirect").addEventListener("click", async () => {
   const data = {
     username: document.getElementById("usernameEntry").value,
@@ -20,3 +24,4 @@ document.getElementById("questDirect").addEventListener("click", async () => {
     alert("Network error: could not send data.");
   }
 });
+
