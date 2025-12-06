@@ -24,8 +24,8 @@ document.getElementById('questDirect').addEventListener('click', function() {
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
   const data = {
-    username: document.getElementById("user").value,
-    password: document.getElementById("pass").value,
+    username: document.getElementById("usernameEntry").value,
+    password: document.getElementById("passwordEntry").value,
   };
 
   try {
