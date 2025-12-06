@@ -21,7 +21,7 @@ document.getElementById("questDirect").addEventListener("click", async () => {
 
     if (res.ok) {
       alert("Your information has been saved!");
-      window.location.pathname ='../questionnaire.html';
+      window.location.pathname ='../questionaire.html';
     } else {
       alert("There was an error saving your information.");
     }
