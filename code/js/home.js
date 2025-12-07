@@ -33,6 +33,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("sodiumGoal").textContent = sodiumGoal;
     document.getElementById("name").textContent = name;
 
+    if (healthGoal == calories) {
+        document.getElementById("calList").innerHTML = `<b>${calList}</b>`;
+    } else if ( healthGoal == sodium) {
+        document.getElementById("sodiumList").innerHTML = `<b>${sodiumlList}</b>`;
+    } else {
+        document.getElementById("fatList").innerHTML = `<b>${fatlList}</b>`;
+    };
+
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");
 
