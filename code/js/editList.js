@@ -1,3 +1,5 @@
+const currentUser = sessionStorage.getItem("currentUser") || null
+
 document.getElementById("submit").addEventListener("click", async () => {
     const data = {
         fat: document.getElementById("fat").value,
