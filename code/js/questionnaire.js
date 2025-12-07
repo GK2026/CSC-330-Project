@@ -28,6 +28,10 @@
   */
 // ---- SUBMIT BUTTON (save data only) ----
 // ---- SUBMIT BUTTON (save data only) ----
+
+const currentUser = sessionStorage.getItem("currentUser") || null
+console.log ("questionnaire currentUser:", currentUser);
+
 document.getElementById("Sub").addEventListener("click", async () => {
   const data = {
     name: document.getElementById("NameInput").value,

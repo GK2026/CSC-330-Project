@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const responseJSON = await response.json();
         console.log("/currentUser response:", responseJSON);
         currentUser = responseJSON.user || null;
+        sessionStorage.setItem("currentUser", currentUser);
     } catch (error) {
         console.error ("Failed to grab currentUser", error);
     }
