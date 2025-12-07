@@ -149,24 +149,6 @@ const server = http.createServer((req, res) => {
     );
     });
   }
-  if (req.method =="POST" && pathname == "/updateGoals"){
-    return read (req, function (data) {
-      let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
-      let calorieGoal =data.goalA;
-      connection_pool.query(
-        "UPDATE users SET calorieGoal=? WHERE username=?",
-        [calorieGoal, username], 
-        function (err, result) {
-          if (err) {
-            send (res, 400, {isFunctional: false, error: err.message});
-          }
-          else {
-            send (res, 200, {isFunctional: true, message: "Update Successful!"});
-          }
-        }
-      );
-    });
-  }
   //uses express to allow server to grab and process static files
   let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
   //app.use just tells the server that it will be using the files inside the parathesis
