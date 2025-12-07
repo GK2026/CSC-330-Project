@@ -35,11 +35,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (healthGoal == "calories") {
         document.getElementById("calList").style.fontWeight = "bold";
+        document.getElementById("advice").textContent = "Calorie Intake"
+        document.getElementById("tip1").textContent = "Low-fat and fiber-rich foods, such as fruit and vegetables, have few calories"
+        document.getElementById("tip2").textContent = "Generally, if you cut about 500 calories a day, you may lose .5-1 lbs a week"
+        document.getElementById("tip3").textContent = "Eat from plates instead of packages to get a sense of what is going in your body"
     } else if ( healthGoal == "sodium") {
         document.getElementById("sodiumList").style.fontWeight = "bold";
+        document.getElementById("advice").textContent = "Sodium Intake"
+        document.getElementById("tip1").textContent = "When cooking, use alternatives to saly such as garlic, citrus, or spices"
+        document.getElementById("tip2").textContent = "When eating out, ask for salt to be ommitted from your meal"
+        document.getElementById("tip3").textContent = "Avoid processed, cured, salted meats and opt for fresh options"
     } else {
         document.getElementById("fatList").style.fontWeight = "bold";
+        document.getElementById("advice").textContent = "Fat Intake"
+        document.getElementById("tip1").textContent = "Choose lower-fat or reduced-fat dairy products"
+        document.getElementById("tip2").textContent = "Grill, bake, poeach or steam food rather thann frying or roasting"
+        document.getElementById("tip3").textContent = "Choose leaner cuts of meat that are lower in fat"
     };
+
 
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");
