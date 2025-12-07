@@ -14,13 +14,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalFat = Number(sessionStorage.getItem("totalFat")) || 0;
   let totalSodium = Number(sessionStorage.getItem("totalSodium")) || 0;
 
+  let foodHistory = JSON.parse(sessionStorage.getItem("foodHistory")) || [];
+
+  function displayHistory() {
+    const list = document.getElementById("foodHistory");
+    list.innerHTML = "";
+    foodHistory.forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    })};
+
+  displayHistory();
+
   addBtn.addEventListener("click", () => {
+    let foodName = document.getElementById("foodName").value;
     let calories = Number(calorieInput.value);
     let fat = Number(fatInput.value);
     let sodium = Number(sodiumInput.value);
     let quantity = Number(quantityInput.value);
 
-    let calorieToAdd = 0;
+    let caloriesToAdd = 0;
     let fatToAdd = 0;
     let sodiumToAdd = 0;
 
@@ -58,9 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter a valid sodium number.");
     }
 
+    const item = `${foodName || "genericItem"}: ${caloriesToAdd} calories, ${fatToAdd} fat, ${sodiumToAdd} sodium, (x${quantity})`;
+    foodHistory.push(item);
+    sessionStorage.setItem("foodHistory", JSON.stringify(foodHistory));
+    displayHistory();
     alert(`Added ${caloriesToAdd} calories, ${fatToAdd} fat, ${sodiumToAdd} sodium!`);
 
     // Clear input fields
+    document.getElementById("foodName").value = '';
     calorieInput.value = "";
     fatInput.value = "";
     sodiumInput.value = "";
