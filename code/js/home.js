@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else if ( healthGoal == "sodium") {
         document.getElementById("sodiumList").style.fontWeight = "bold";
         document.getElementById("advice").textContent = "Sodium Intake"
-        document.getElementById("tip1").textContent = "When cooking, use alternatives to saly such as garlic, citrus, or spices"
-        document.getElementById("tip2").textContent = "When eating out, ask for salt to be ommitted from your meal"
+        document.getElementById("tip1").textContent = "When cooking, use alternatives to salt such as garlic, citrus, or spices"
+        document.getElementById("tip2").textContent = "When eating out, ask for salt to be omitted from your meal"
         document.getElementById("tip3").textContent = "Avoid processed, cured, salted meats and opt for fresh options"
     } else {
         document.getElementById("fatList").style.fontWeight = "bold";
