@@ -29,10 +29,24 @@
 // ---- SUBMIT BUTTON (save data only) ----
 // ---- SUBMIT BUTTON (save data only) ----
 
-const currentUser = sessionStorage.getItem("currentUser") || null
-console.log ("questionnaire currentUser:", currentUser);
-
 document.getElementById("Sub").addEventListener("click", async () => {
+    let currentUser = null;
+
+  try {
+      const response = await fetch ('/currentUser');
+      const responseJSON = await response.json();
+      console.log("/currentUser response:", responseJSON);
+      currentUser = responseJSON.user || null;
+      sessionStorage.setItem("currentUser", currentUser);
+      console.log ("questionnaire currentUser:", currentUser);
+  } catch (error) {
+      console.error ("Failed to grab currentUser", error);
+  }
+
+  window.currentUser = currentUser;
+
+  console.log(window.currentUser);
+
   const data = {
     name: document.getElementById("NameInput").value,
     gender: document.getElementById("GenderInput").value,
