@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.getElementById("calGoal").textContent = calGoal;
     document.getElementById("fatGoal").textContent = fatGoal;
     document.getElementById("sodiumGoal").textContent = sodiumGoal;
+    document.getElementById("name").textContent = name;
 
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");
