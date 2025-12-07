@@ -24,8 +24,6 @@ document.getElementById("Sub").addEventListener("click", async () => {
     name: document.getElementById("NameInput").value,
     gender: document.getElementById("GenderInput").value,
     age: document.getElementById("AgeInput").value,
-    weight: document.getElementById("WeightInput").value,
-    height: document.getElementById("HeightInput").value,
     calorieGoal: document.getElementById("CalGoalInput").value,
     fatGoal: document.getElementById("FatGoalInput").value,
     sodiumGoal: document.getElementById("SodGoalInput").value,
@@ -41,9 +39,13 @@ document.getElementById("Sub").addEventListener("click", async () => {
 
     if (res.ok) {
       alert("Your information has been saved!");
-      sessionStorage.setItem("goalCal", data.calorieGoal);
-      sessionStorage.setItem("goalFat", data.fatGoal);
-      sessionStorage.setItem("goalSodium", data.sodiumGoal);
+      sessionStorage.setItem("calGoal", data.calorieGoal);
+      sessionStorage.setItem("fatGoal", data.fatGoal);
+      sessionStorage.setItem("sodiumGoal", data.sodiumGoal);
+      sessionStorage.setItem("name", data.name);
+      sessionStorage.setItem("gender", data.gender);
+      sessionStorage.setItem("age", data.age);
+      sessionStorage.setItem("healthGoal", data.healthGoal);
       
     } else {
       alert("There was an error saving your information.");

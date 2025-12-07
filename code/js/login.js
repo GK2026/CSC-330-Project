@@ -36,7 +36,17 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
     if (res.ok) {
       alert("Your information has been saved!");
-	  window.location.pathname = '../home.html';
+      const userData = await res.json();
+      sessionStorage.setItem("currentUser", userData.user);
+      sessionStorage.setItem("name", userData.name);      
+      sessionStorage.setItem("gender", userData.gender);
+      sessionStorage.setItem("age", userData.age);
+      sessionStorage.setItem("calGoal", userData.calGoal);
+      sessionStorage.setItem("fatGoal", userData.fatGoal);
+      sessionStorage.setItem("sodiumGoal", userData.sodiumGoal);
+      sessionStorage.setItem("healthGoal", userData.healthGoal);
+
+	    window.location.pathname = '../home.html';
     } else {
       alert("There was an error saving your information.");
     }

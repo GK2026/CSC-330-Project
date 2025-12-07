@@ -12,11 +12,15 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error ("Failed to grab currentUser", error);
     }
 
-    const goalCal = sessionStorage.getItem("goalCal");
-    const goalFat = sessionStorage.getItem("goalFat");
-    const goalSodium = sessionStorage.getItem("goalSodium");
+    const goalCal = sessionStorage.getItem("calGoal");
+    const goalFat = sessionStorage.getItem("fatGoal");
+    const goalSodium = sessionStorage.getItem("sodiumGoal");
+    const age = sessionStorage.getItem("age");
+    const gender = sessionStorage.getItem("gender");
+    const healthGoal = sessionStorage.getItem("healthGoal");
+    const name = sessionStorage.getItem("name");
 
-    console.log("goals:", goalCal, goalFat, goalSodium);
+    console.log("goals:", goalCal, goalFat, goalSodium, age, gender, healthGoal, name);
 
     window.currentUser = currentUser;
 

@@ -89,7 +89,7 @@ const server = http.createServer((req, res) => {
       const password = data.password;
 
       connection_pool.query(
-        "SELECT username FROM users WHERE username=? AND password=?",
+        "SELECT username, name, gender, age, calorieGoal, fatGoal, sodiumGoal, healthGoal FROM users WHERE username=? AND password=?",
         [username, password],
         function (err, results) {
           if (err) {
@@ -97,7 +97,16 @@ const server = http.createServer((req, res) => {
           } else if (results.length > 0) {
             currentUser = username;
             console.log("Server set currentUser to:", currentUser);
-            send(res, 200, { isFunctional: true, user: results[0].username });
+            send(res, 200, { isFunctional: true, user: results[0].username,
+              calGoal: results[0].calorieGoal,
+              fatGoal: results[0].fatGoal,
+              sodiumGoal: results[0].sodiumGoal,
+              name: results[0].name,
+              gender: results[0].gender,
+              age: results[0].age,
+              healthGoal: results[0].healthGoal
+
+             });
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
