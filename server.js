@@ -85,8 +85,8 @@ const server = http.createServer((req, res) => {
   // Otherwise will send a 400 error
   if (req.method == "POST" && pathname == "/login") {
     return read(req, function (data) {
-      const username = data.username;
-      const password = data.password;
+      const username = data.user;
+      const password = data.pass;
 
       connection_pool.query(
         "SELECT username, name, gender, age, calorieGoal, fatGoal, sodiumGoal, healthGoal FROM users WHERE username=? AND password=?",
@@ -107,10 +107,31 @@ const server = http.createServer((req, res) => {
               healthGoal: results[0].healthGoal
 
              });
+            console.log("Login successful");
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
           // Removed the ending of the connection_pool
+        }
+      );
+    });
+  }
+  //post method for /editList, just for updating nutrition goals
+  if (req.method =="POST" && pathname == "/editList"){
+    return read (req, function (data) {
+      let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
+      let fatGoal =data.fat;
+      let sodiumGoal =data.sodium;
+      connection_pool.query(
+        "UPDATE users SET fatGoal=?, sodiumGoal=? WHERE username=?",
+        [fatGoal, sodiumGoal, username], 
+        function (err, result) {
+          if (err) {
+            send (res, 400, {isFunctional: false, error: err.message});
+          }
+          else {
+            send (res, 200, {isFunctional: true, message: "Update Successful!"});
+          }
         }
       );
     });

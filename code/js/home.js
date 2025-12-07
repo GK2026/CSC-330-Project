@@ -54,24 +54,21 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
 
-    // Get the span where total calories are displayed
+    // Calories consumed (from sessionStorage)
     const totalCalDisplay = document.getElementById("totalCal");
+    const savedTotal = sessionStorage.getItem("totalCalories") || 0;
+    if (totalCalDisplay) totalCalDisplay.textContent = savedTotal;
 
-    // Load total calories from sessionStorage (starts at 0 if nothing is stored)
-    const savedTotal = Number(sessionStorage.getItem("totalCalories")) || 0;
+    // Nutrition A and B from localStorage
+    const nutritionADisplay = document.getElementById("nutritionADisplay");
+    const nutritionBDisplay = document.getElementById("nutritionBDisplay");
+    const nutritionA = localStorage.getItem("nutritionA") || "--";
+    const nutritionB = localStorage.getItem("nutritionB") || "--";
 
-    // Display the total
-    if (totalCalDisplay) {
-        totalCalDisplay.textContent = savedTotal;
-    }
+    if (nutritionADisplay) nutritionADisplay.textContent = nutritionA;
+    if (nutritionBDisplay) nutritionBDisplay.textContent = nutritionB;
 
-    // Header
-    const header = document.querySelector("#header");
-    if (header) {
-        header.innerHTML = "This is Daily Diet";
-    }
-
-    // NAVIGATION BUTTONS
+    // Navigation buttons
     const recordFoodBtn = document.getElementById("recordFoodBtn");
     if (recordFoodBtn) recordFoodBtn.onclick = () => location.href = "recordFood.html";
 
@@ -89,5 +86,4 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
     if (backToQuestionBtn) backToQuestionBtn.onclick = () => location.href = "questionnaire.html";
-
 });

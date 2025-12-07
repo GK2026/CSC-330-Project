@@ -1,5 +1,12 @@
 
-
+#logo {
+  padding: 28px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: auto;
+}
 section {
   background: #ffffff;
   border: none;
