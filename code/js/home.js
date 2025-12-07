@@ -1,6 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
-    fetch('/currentUser')
+    let currentUser = null;
+
+    try {
+        const response = await fetch ('/currentUser');
+        const responseJSON = await response.json();
+        currentUser = responseJSON.user || null;
+    } catch (error) {
+        console.error ("Failed to grab currentUser", error);
+    }
+
+    window.currentUser = currentUser;
+
+    console.log(window.currentUser);
 
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");

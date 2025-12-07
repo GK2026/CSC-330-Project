@@ -68,8 +68,8 @@ const server = http.createServer((req, res) => {
                 if (err2) {
                   send(res, 400, { isFunctional: false, error: err2.message });
                 } else {
-                  send(res, 200, { isFunctional: true, message: "Signup successful" });
                   currentUser = username;
+                  send(res, 200, { isFunctional: true, message: "Signup successful" });
                 }
                 // Removed the ending of the connection_pool
               }
@@ -95,8 +95,8 @@ const server = http.createServer((req, res) => {
           if (err) {
             send(res, 400, { isFunctional: false, error: err.message });
           } else if (results.length > 0) {
-            send(res, 200, { isFunctional: true, userId: results[0].username });
             currentUser = username;
+            send(res, 200, { isFunctional: true, userId: results[0].username });
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
