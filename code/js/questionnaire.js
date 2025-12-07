@@ -29,8 +29,8 @@
 // ---- SUBMIT BUTTON (save data only) ----
 // ---- SUBMIT BUTTON (save data only) ----
 
-document.getElementById("Sub").addEventListener("click", async () => {
-    let currentUser = null;
+
+  let currentUser = null;
 
   try {
       const response = await fetch ('/currentUser');
@@ -46,6 +46,7 @@ document.getElementById("Sub").addEventListener("click", async () => {
   window.currentUser = currentUser;
 
   console.log(window.currentUser);
+document.getElementById("Sub").addEventListener("click", async () => {
 
   const data = {
     name: document.getElementById("NameInput").value,
