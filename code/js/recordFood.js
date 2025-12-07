@@ -15,13 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalSodium = Number(sessionStorage.getItem("totalSodium")) || 0;
 
   addBtn.addEventListener("click", () => {
-    const calories = Number(calorieInput.value);
-    const fat = Number(fatInput.value);
-    const sodium = Number(sodiumInput.value);
-    const quantity = Number(quantityInput.value);
+    let calories = Number(calorieInput.value);
+    let fat = Number(fatInput.value);
+    let sodium = Number(sodiumInput.value);
+    let quantity = Number(quantityInput.value);
+
+    let calorieToAdd = 0;
+    let fatToAdd = 0;
+    let sodiumToAdd = 0;
 
     if (!isNaN(calories) && calories > 0) {
-      const caloriesToAdd = calories * quantity;
+      caloriesToAdd = calories * quantity;
       totalCalories += caloriesToAdd;
 
       // Save updated running total
@@ -32,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
       if (!isNaN(fat) && fat > 0) {
-      const fatToAdd = fat * quantity;
+      fatToAdd = fat * quantity;
       totalFat += fatToAdd;
 
       // Save updated running total
@@ -44,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
       if (!isNaN(sodium) && sodium > 0) {
-      const sodiumToAdd = sodium * quantity;
+      sodiumToAdd = sodium * quantity;
       totalSodium += sodiumToAdd;
 
       // Save updated running total
