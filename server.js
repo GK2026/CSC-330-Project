@@ -31,6 +31,8 @@ const connection_pool = mysql.createPool({
 
 })
 
+let currentUser = null;
+
 // Relocated all the mySQL code in our project to here since it should be in our backend (e.g. login and signup.js files are frontend)
 // Relocate or deleted mySQL code depending on redundacy
 
@@ -39,6 +41,11 @@ const server = http.createServer((req, res) => {
   const parse = url.parse(req.url, true);
   const pathname = parse.pathname; 
 
+
+  if (req.method == "GET" && pathname == "/currentUser") {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    return res.end(JSON.stringify({user: currentUser}));
+  }
 
   // POST method, client side will access the database through /signup
   // Checks for available username, and if available, inserts the username and password into the database
@@ -64,6 +71,7 @@ const server = http.createServer((req, res) => {
                 if (err2) {
                   send(res, 400, { isFunctional: false, error: err2.message });
                 } else {
+                  currentUser = username;
                   send(res, 200, { isFunctional: true, message: "Signup successful" });
                 }
                 // Removed the ending of the connection_pool
@@ -78,19 +86,30 @@ const server = http.createServer((req, res) => {
   // POST method, client side will access the database through /login
   // Checks if a specific username and password combo exists via the length of results, and if it exists it will return "isFunctional: true", and the corresponding userID
   // Otherwise will send a 400 error
-  if (req.method == "POST" && pathname == "/login.html") {
+  if (req.method == "POST" && pathname == "/login") {
     return read(req, function (data) {
-      const username = data.user;
-      const password = data.pass;
+      const username = data.username;
+      const password = data.password;
 
       connection_pool.query(
-        "SELECT id FROM users WHERE username=? AND password=?",
+        "SELECT username, name, gender, age, calorieGoal, fatGoal, sodiumGoal, healthGoal FROM users WHERE username=? AND password=?",
         [username, password],
         function (err, results) {
           if (err) {
             send(res, 400, { isFunctional: false, error: err.message });
           } else if (results.length > 0) {
-            send(res, 200, { isFunctional: true, userId: results[0].id });
+            currentUser = username;
+            console.log("Server set currentUser to:", currentUser);
+            send(res, 200, { isFunctional: true, user: results[0].username,
+              calGoal: results[0].calorieGoal,
+              fatGoal: results[0].fatGoal,
+              sodiumGoal: results[0].sodiumGoal,
+              name: results[0].name,
+              gender: results[0].gender,
+              age: results[0].age,
+              healthGoal: results[0].healthGoal
+
+             });
             console.log("Login successful");
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
@@ -100,11 +119,31 @@ const server = http.createServer((req, res) => {
       );
     });
   }
+  //post method for /editList, just for updating nutrition goals
+  if (req.method =="POST" && pathname == "/editList"){
+    return read (req, function (data) {
+      let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
+      let fatGoal =data.fat;
+      let sodiumGoal =data.sodium;
+      connection_pool.query(
+        "UPDATE users SET fatGoal=?, sodiumGoal=? WHERE username=?",
+        [fatGoal, sodiumGoal, username], 
+        function (err, result) {
+          if (err) {
+            send (res, 400, {isFunctional: false, error: err.message});
+          }
+          else {
+            send (res, 200, {isFunctional: true, message: "Update Successful!"});
+          }
+        }
+      );
+    });
+  }
   
   //post method for /questionnaire
   if (req.method == "POST" && pathname == "/questionnaire") {
     return read(req, function (data) {
-      let username = "Jane Doe"; //hardcoded for now
+      let username = currentUser;
       let name = data.name;
       let gender = data.gender;
       let age = data.age;
@@ -178,3 +217,4 @@ io.on("connection", (socket) => {
 server.listen(80, () => {
   console.log("Server running on port 80");
 });
+

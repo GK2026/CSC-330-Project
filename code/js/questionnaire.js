@@ -1,40 +1,29 @@
-  /*
-  
-  // Attach handlers to questionnaire buttons
-  handleInput("NameBtn", "NameInput", "Name");
-  handleInput("GenderBtn", "GenderInput", "Gender");
-  handleInput("AgeBtn", "AgeInput", "Age");
-  handleInput("WeightBtn", "WeightInput", "Weight");
-  handleInput("HeightBtn", "HeightInput", "Height");
-  handleInput("CalGoalBtn", "CalGoalInput", "Calorie Goal");
-  handleInput("FatGoalBtn", "FatGoalInput", "Fat Goal");
-  handleInput("SodGoalBtn", "SodGoalInput", "Sodium Goal");
+document.addEventListener("DOMContentLoaded", async function () {
+  let currentUser = null;
 
-   // HELPER FUNCTION FOR INPUT BUTTONS
-  function handleInput(buttonId, inputId, label) {
-    document.getElementById(buttonId).addEventListener("click", function () {
-      const value = document.getElementById(inputId).value;
-    });
+  try {
+      const response = await fetch ('/currentUser');
+      const responseJSON = await response.json();
+      console.log("/currentUser response:", responseJSON);
+      currentUser = responseJSON.user || null;
+      sessionStorage.setItem("currentUser", currentUser);
+      console.log ("questionnaire currentUser:", currentUser);
+  } catch (error) {
+      console.error ("Failed to grab currentUser", error);
   }
 
-  // Dropdown change
-  document.getElementById("HealthGoal").addEventListener("change", function () {
-    const selected = this.options[this.selectedIndex].text;
-  });
+  window.currentUser = currentUser;
 
-  const questionPage = document.getElementById("question");
-  const recordFood = document.getElementById("recordFood");
-  const goalPage = document.getElementById("goalPage");
-  */
-// ---- SUBMIT BUTTON (save data only) ----
-// ---- SUBMIT BUTTON (save data only) ----
+  console.log(window.currentUser);
+
+});
+
 document.getElementById("Sub").addEventListener("click", async () => {
+
   const data = {
     name: document.getElementById("NameInput").value,
     gender: document.getElementById("GenderInput").value,
     age: document.getElementById("AgeInput").value,
-    weight: document.getElementById("WeightInput").value,
-    height: document.getElementById("HeightInput").value,
     calorieGoal: document.getElementById("CalGoalInput").value,
     fatGoal: document.getElementById("FatGoalInput").value,
     sodiumGoal: document.getElementById("SodGoalInput").value,
@@ -50,6 +39,14 @@ document.getElementById("Sub").addEventListener("click", async () => {
 
     if (res.ok) {
       alert("Your information has been saved!");
+      sessionStorage.setItem("calGoal", data.calorieGoal);
+      sessionStorage.setItem("fatGoal", data.fatGoal);
+      sessionStorage.setItem("sodiumGoal", data.sodiumGoal);
+      sessionStorage.setItem("name", data.name);
+      sessionStorage.setItem("gender", data.gender);
+      sessionStorage.setItem("age", data.age);
+      sessionStorage.setItem("healthGoal", data.healthGoal);
+      
     } else {
       alert("There was an error saving your information.");
     }

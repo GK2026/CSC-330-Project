@@ -1,5 +1,10 @@
+
 // Connect to backend Socket.IO server
 const socket = io();
+
+
+const currentUser = sessionStorage.getItem("currentUser") || null;
+
 
 // elements
 const messagesDiv = document.getElementById("messages");
@@ -32,3 +37,4 @@ input.addEventListener("keypress", (e) => {
 socket.on("chatMessage", (msg) => {
     addMessage(msg);
 });
+
