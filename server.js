@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
+const { Server } = require("socket.io");
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -180,9 +181,7 @@ const server = http.createServer((req, res) => {
 // moved from login.js, database code should run through backend (server.js)
 // moved from signup.js
 
-const { Server } = require("socket.io");
 const io = new Server(server);
-
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
