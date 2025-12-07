@@ -29,7 +29,7 @@
 // ---- SUBMIT BUTTON (save data only) ----
 // ---- SUBMIT BUTTON (save data only) ----
 
-
+document.addEventListener("DOMContentLoaded", async function () {
   let currentUser = null;
 
   try {
@@ -46,6 +46,9 @@
   window.currentUser = currentUser;
 
   console.log(window.currentUser);
+
+});
+
 document.getElementById("Sub").addEventListener("click", async () => {
 
   const data = {
