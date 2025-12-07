@@ -27,10 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // Save updated running total
       sessionStorage.setItem("totalCalories", totalCalories);
 
-
-      // Clear input fields
-      calorieInput.value = "";
-      quantityInput.value = 1;
     } else {
       alert("Please enter a valid calorie number.");
     }
@@ -43,9 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
       sessionStorage.setItem("totalFat", totalFat);
 
 
-      // Clear input fields
-      fatInput.value = "";
-      quantityInput.value = 1;
     } else {
       alert("Please enter a valid fat number.");
     }
@@ -57,14 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // Save updated running total
       sessionStorage.setItem("totalSodium", totalSodium);
 
-
-      // Clear input fields
-      sodiumInput.value = "";
-      quantityInput.value = 1;
     } else {
       alert("Please enter a valid sodium number.");
     }
+
     alert(`Added ${caloriesToAdd} calories, ${fatToAdd} fat, ${sodiumToAdd} sodium!`);
+
+    // Clear input fields
+    calorieInput.value = "";
+    fatInput.value = "";
+    sodiumInput.value = "";
+    quantityInput.value = 1;
+
   });
 
   

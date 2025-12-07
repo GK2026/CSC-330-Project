@@ -60,11 +60,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     if (totalCalDisplay) totalCalDisplay.textContent = savedTotal;
 
     const totalFatDisplay = document.getElementById("totalFat");
-    const savedFatTotal = sessionStorage.getItem("totalCalories") || 0;
+    const savedFatTotal = sessionStorage.getItem("totalFat") || 0;
     if (totalFatDisplay) totalFatDisplay.textContent = savedFatTotal;
 
     const totalSodiumDisplay = document.getElementById("totalSodium");
-    const savedSodiumTotal = sessionStorage.getItem("totalCalories") || 0;
+    const savedSodiumTotal = sessionStorage.getItem("totalSodium") || 0;
     if (totalSodiumDisplay) totalSodiumDisplay.textContent = savedSodiumTotal;
 
     // Nutrition A and B from localStorage
