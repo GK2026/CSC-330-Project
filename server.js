@@ -96,7 +96,7 @@ const server = http.createServer((req, res) => {
             send(res, 400, { isFunctional: false, error: err.message });
           } else if (results.length > 0) {
             currentUser = username;
-            send(res, 200, { isFunctional: true, userId: results[0].username });
+            send(res, 200, { isFunctional: true, user: results[0].username });
           } else {
             send(res, 400, { isFunctional: false, error: "Username and/or password incorrect" });
           }
