@@ -1,29 +1,46 @@
-k/* Use the same font as Home page */
-body, input, select, button, label {
-    font-family: "Segoe UI", Arial, sans-serif;
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f9f9f9;
 }
 
-/* Green buttons like Home page */
+h1 {
+  background-color: #8fbc8f;
+  color: #2f4f2f;
+  border-radius: 16px;
+  padding: 28px;
+  display: block;
+  margin-left: 500px;
+  margin-right: 500px;
+}
+#inputArea {
+  background: #ffffff;
+  border: none;
+  border-radius: 16px;
+  padding: 28px;
+  margin-left: 400px;
+  margin-right: 400px;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+}
 button {
-    background-color: #8fbc8f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 18px;
-    margin: 6px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  margin: 5px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background-color: #8fbc8f;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-    background-color: #7daa7d;
-    transform: translateY(-2px);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.18);
+  background-color: #7daa7d;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.18);
 }
 
 button:active {
-    transform: scale(0.97);
+  transform: scale(0.97);
 }
-
