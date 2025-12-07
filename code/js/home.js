@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
         const response = await fetch ('/currentUser');
         const responseJSON = await response.json();
+        console.log("/currentUser response:", responseJSON);
         currentUser = responseJSON.user || null;
     } catch (error) {
         console.error ("Failed to grab currentUser", error);
