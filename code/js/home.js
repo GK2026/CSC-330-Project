@@ -12,19 +12,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error ("Failed to grab currentUser", error);
     }
 
-    const goalCal = sessionStorage.getItem("calGoal");
-    const goalFat = sessionStorage.getItem("fatGoal");
-    const goalSodium = sessionStorage.getItem("sodiumGoal");
+    const calGoal = sessionStorage.getItem("calGoal");
+    const fatGoal = sessionStorage.getItem("fatGoal");
+    const sodiumGoal = sessionStorage.getItem("sodiumGoal");
     const age = sessionStorage.getItem("age");
     const gender = sessionStorage.getItem("gender");
     const healthGoal = sessionStorage.getItem("healthGoal");
     const name = sessionStorage.getItem("name");
 
-    console.log("goals:", goalCal, goalFat, goalSodium, age, gender, healthGoal, name);
+
+
+    console.log("goals:", calGoal, fatGoal, sodiumGoal, age, gender, healthGoal, name);
 
     window.currentUser = currentUser;
 
     console.log(window.currentUser);
+
+    document.getElementById("calGoal").textContent = calGoal;
+    document.getElementById("fatGoal").textContent = fatGoal;
+    document.getElementById("sodiumGoal").textContent = sodiumGoal;
 
     // Get the span where total calories are displayed
     const totalCalDisplay = document.getElementById("totalCal");
