@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("fatList").style.fontWeight = "bold";
         document.getElementById("advice").textContent = "Fat Intake"
         document.getElementById("tip1").textContent = "Choose lower-fat or reduced-fat dairy products"
-        document.getElementById("tip2").textContent = "Grill, bake, poeach or steam food rather thann frying or roasting"
+        document.getElementById("tip2").textContent = "Grill, bake, poach or steam food rather thann frying or roasting"
         document.getElementById("tip3").textContent = "Choose leaner cuts of meat that are lower in fat"
     };
 
