@@ -85,8 +85,8 @@ const server = http.createServer((req, res) => {
   // Otherwise will send a 400 error
   if (req.method == "POST" && pathname == "/login") {
     return read(req, function (data) {
-      const username = data.user;
-      const password = data.pass;
+      const username = data.username;
+      const password = data.password;
 
       connection_pool.query(
         "SELECT username, name, gender, age, calorieGoal, fatGoal, sodiumGoal, healthGoal FROM users WHERE username=? AND password=?",
