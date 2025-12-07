@@ -3,6 +3,12 @@ body {
   text-align: center;
   background-color: #f9f9f9;
 }
+h2 {
+  background-color:#8fbc8f;
+  color: #2f4f2f;
+  border-radius: 16px;
+  font-family: "Neue Machina", sans-serif;
+}
 
 .hidden {
   display: none;
