@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error ("Failed to grab currentUser", error);
     }
 
-    const goalCal = sessionStorage.getItem("calorieGoal");
-    const goalFat = sessionStorage.getItem("fatGoal");
-    const goalSodium = sessionStorage.getItem("sodiumGoal");
+    const goalCal = sessionStorage.getItem("goalCal");
+    const goalFat = sessionStorage.getItem("goalFat");
+    const goalSodium = sessionStorage.getItem("goalSodium");
 
     console.log("goals:", goalCal, goalFat, goalSodium);
 
