@@ -41,9 +41,9 @@ document.getElementById("Sub").addEventListener("click", async () => {
 
     if (res.ok) {
       alert("Your information has been saved!");
-      sessionStorage.setItem("goalCal", data.goalCal);
-      sessionStorage.setItem("goalFat", data.goalFat);
-      sessionStorage.setItem("goalSodium", data.goalSodium);
+      sessionStorage.setItem("goalCal", data.calorieGoal);
+      sessionStorage.setItem("goalFat", data.fatGoal);
+      sessionStorage.setItem("goalSodium", data.sodiumGoal);
       
     } else {
       alert("There was an error saving your information.");
