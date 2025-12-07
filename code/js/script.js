@@ -1,3 +1,5 @@
+const currentUser = sessionStorage.getItem("currentUser") || null
+
 // Helper function to handle button clicks
 function handleInput(buttonId, inputId, label) {
     document.getElementById(buttonId).addEventListener("click", function () {
@@ -18,4 +20,6 @@ function handleInput(buttonId, inputId, label) {
     const selected = this.options[this.selectedIndex].text;
     alert(`Selected Health Goal: ${selected}`);
     console.log(`Health Goal: ${selected}`);
-  });
+  })
+    })
+  };

@@ -1,3 +1,5 @@
+const currentUser = sessionStorage.getItem("currentUser") || null
+
 // RECORDFOOD.JS
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.getElementById("addCal");

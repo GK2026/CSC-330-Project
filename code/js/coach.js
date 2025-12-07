@@ -1,0 +1,1 @@
+const currentUser = sessionStorage.getItem("currentUser") || null

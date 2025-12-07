@@ -1,4 +1,4 @@
-document.getElementById('returnLogin').addEventListener('click', function() {
+document.getElementById('returnLogin').addEventListener('click', async function() {
 	window.location.pathname = '../login.html'; //redirects to login page
 });
 
@@ -6,7 +6,10 @@ document.getElementById('returnLogin').addEventListener('click', function() {
 // 	window.location.pathname ='../questionaire.html'; //sends user to questionaire upon signup
 
 
+
 document.getElementById("questDirect").addEventListener("click", async () => {
+
+  
   const data = {
     username: document.getElementById("usernameEntry").value,
     password: document.getElementById("passwordEntry").value,
