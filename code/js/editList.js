@@ -4,7 +4,7 @@ document.getElementById("submit").addEventListener("click", async () => {
     const data = {
         fatGoal: document.getElementById("fat").value,
         sodiumGoal: document.getElementById("sodium").value,
-        calorieGoal: document.getELementById("calorie").value,
+        calorieGoal: document.getElementById("calorie").value,
         healthGoal: document.getElementById("health").value
     } 
      try {
@@ -19,6 +19,7 @@ document.getElementById("submit").addEventListener("click", async () => {
         sessionStorage.setItem("fatGoal", data.fatGoal);
         sessionStorage.setItem("sodiumGoal", data.sodiumGoal);
         sessionStorage.setItem("healthGoal", data.healthGoal);
+
     } else {
         alert("Error, could not update goals");
     }
