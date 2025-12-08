@@ -94,4 +94,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
     if (backToQuestionBtn) backToQuestionBtn.onclick = () => location.href = "questionnaire.html";
+
+    let resetTotalsBtn = document.getElementById("resetTotalsBtn");
+
+    resetTotalsBtn.onclick = function() {
+        sessionStorage.setItem("totalCalories", 0);
+        sessionStorage.setItem("totalFat", 0);
+        sessionStorage.setItem("totalSodium", 0);
+
+        document.getElementById("totalCal").textContent = 0;
+        document.getElementById("totalFat").textContent = 0;
+        document.getElementById("totalSodium").textContent = 0;
+
+    };
+
+    let logoutBtn = document.getElementById("logoutBtn");
+
+    logoutBtn.onclick = function() {
+        location.href = "login.html";
+    };
 });
