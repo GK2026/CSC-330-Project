@@ -1,5 +1,39 @@
 const currentUser = sessionStorage.getItem("currentUser") || null
 
+function displayRec() {
+    const rec = document.getElementById("recommendation");
+
+    let age = Number(sessionStorage.getItem("age"));
+    let gender = sessionStorage.getItem("gender");
+
+    if (gender == "F") {
+        if (age < 19) {
+            rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 1800.</b> `;
+        }
+        else if (age >= 19 && age <=30) {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 2000.</b> `;
+        } else if (age >=31 && age <=50) {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 1800.</b> `;
+        } else {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 1600.</b> `;
+        }
+    } else {
+        if (age < 19) {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 2800.</b> `;
+        }
+        else if (age >= 19 && age <=30) {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 2600.</b> `;
+        } else if (age >=31 && age <=50) {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 2200.</b> `;
+        } else {
+                        rec.innerHTML = `Based on your gender and age, we recommend a <b> calorie goal of 2000.</b> `;
+        }
+    }
+}
+
+
+displayRec();
+
 document.getElementById("submit").addEventListener("click", async () => {
     const data = {
         fatGoal: document.getElementById("fat").value,
