@@ -3,13 +3,16 @@
 const socket = io();
 
 
-const currentUser = sessionStorage.getItem("currentUser") || null;
 
 
 // elements
 const messagesDiv = document.getElementById("messages");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
+
+//Get current user from login
+const currentUser = sessionStorage.getItem("currentUser") || "Unknown";
+
 
 // Add message to screen
 function addMessage(text) {
@@ -23,9 +26,13 @@ function addMessage(text) {
 // Send message
 sendBtn.addEventListener("click", () => {
     if (input.value.trim()) {
-        socket.emit("chatMessage", input.value);
-        input.value = "";
-    }
+        socket.emit("chatMessage", {
+        	user: currentUser,
+		text: input.value
+	});
+
+	input.value = "";
+     }
 });
 
 // Allow Enter key to send
@@ -34,7 +41,7 @@ input.addEventListener("keypress", (e) => {
 });
 
 // Receive messages from server
-socket.on("chatMessage", (msg) => {
-    addMessage(msg);
+socket.on("chatMessage", (data) => {
+    addMessage(`${data.user}: ${data.text}`);
 });
 
