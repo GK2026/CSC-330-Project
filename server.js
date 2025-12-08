@@ -116,15 +116,39 @@ const server = http.createServer((req, res) => {
       );
     });
   }
+
+  if (req.method =="POST" && pathname == "/editProfile"){
+    return read (req, function (data) {
+      let username = currentUser;
+      let name = data.name;
+      let gender = data.gender;
+      let age = data.age; 
+      connection_pool.query(
+        "UPDATE users SET name=?, gender=?, age=?WHERE username=?",
+        [name, gender, age, username], 
+        function (err, result) {
+          if (err) {
+            send (res, 400, {isFunctional: false, error: err.message});
+          }
+          else {
+            send (res, 200, {isFunctional: true, message: "Update Successful!"});
+          }
+        }
+      );
+    });
+  }
+
   //post method for /editList, just for updating nutrition goals
   if (req.method =="POST" && pathname == "/editList"){
     return read (req, function (data) {
-      let username = "Jane Doe"; //we need to figure out how to get the username based on who's logged in
-      let fatGoal =data.fat;
-      let sodiumGoal =data.sodium;
+      let username = currentUser; //we need to figure out how to get the username based on who's logged in
+      let fatGoal =data.fatGoal;
+      let sodiumGoal =data.sodiumGoal;
+      let calorieGoal = data.calorieGoal;
+      let healthGoal = data.healthGoal;
       connection_pool.query(
-        "UPDATE users SET fatGoal=?, sodiumGoal=? WHERE username=?",
-        [fatGoal, sodiumGoal, username], 
+        "UPDATE users SET fatGoal=?, sodiumGoal=?, calorieGoal=?, healthGoal=? WHERE username=?",
+        [fatGoal, sodiumGoal, calorieGoal, healthGoal, username], 
         function (err, result) {
           if (err) {
             send (res, 400, {isFunctional: false, error: err.message});

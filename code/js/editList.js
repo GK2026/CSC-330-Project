@@ -2,8 +2,10 @@ const currentUser = sessionStorage.getItem("currentUser") || null
 
 document.getElementById("submit").addEventListener("click", async () => {
     const data = {
-        fat: document.getElementById("fat").value,
-        sodium: document.getElementById("sodium").value
+        fatGoal: document.getElementById("fat").value,
+        sodiumGoal: document.getElementById("sodium").value,
+        calorieGoal: document.getELementById("calorie").value,
+        healthGoal: document.getElementById("health").value
     } 
      try {
         const res = await fetch("/editList", {
@@ -12,9 +14,13 @@ document.getElementById("submit").addEventListener("click", async () => {
             body: JSON.stringify(data)
         });
     if (res.ok) {
-          alert("Goals Updated");
+        alert("Goals Updated");
+        sessionStorage.setItem("calGoal", data.calorieGoal);
+        sessionStorage.setItem("fatGoal", data.fatGoal);
+        sessionStorage.setItem("sodiumGoal", data.sodiumGoal);
+        sessionStorage.setItem("healthGoal", data.healthGoal);
     } else {
-          alert("Error, could not update goals");
+        alert("Error, could not update goals");
     }
     } catch (err) {
         alert("Network error, please try again later");
