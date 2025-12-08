@@ -1,6 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", async function () {
 
-    let currentUser = null;
+    let currentUser = sessionStorage.getItem("currentUser") || null;
 
     try {
         const response = await fetch ('/currentUser');
@@ -86,4 +87,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const backToQuestionBtn = document.getElementById("backToQuestionBtn");
     if (backToQuestionBtn) backToQuestionBtn.onclick = () => location.href = "questionnaire.html";
+
+    if (currentUser === null) {
+        document.getElementById("loginreminder").innerHTML = 
+        "<p>Please login to Use Daily Diet!" +
+        "<button onclick=\"location.pathname='../login.html'\">Login</button></p>";
+    }
 });
