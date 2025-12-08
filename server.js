@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
 const url = require("url");
+const { Server } = require("socket.io");
 
 //browser server comm - send json
 function send(res, code, msg) {
@@ -190,7 +191,7 @@ const server = http.createServer((req, res) => {
       }
     );
     });
-}
+  }
   //uses express to allow server to grab and process static files
   let filePath = path.join(__dirname, "code", pathname === "/" ? "login.html" : pathname);
   //app.use just tells the server that it will be using the files inside the parathesis
@@ -223,9 +224,7 @@ const server = http.createServer((req, res) => {
 // moved from login.js, database code should run through backend (server.js)
 // moved from signup.js
 
-const { Server } = require("socket.io");
 const io = new Server(server);
-
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 

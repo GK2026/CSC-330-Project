@@ -16,6 +16,29 @@ section {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 } 
 
+#loginreminder {
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: #8fbc8f;
+  color: #2f4f2f;
+  border-radius: 16px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#loginreminder button {
+  background-color:#2f4f2f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  margin: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 section:hover {
   transform: translateY(-3px);
   box-shadow: 0px 10px 24px rgba(0, 0, 0, 0,12);
