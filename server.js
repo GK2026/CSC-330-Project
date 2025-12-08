@@ -189,7 +189,7 @@ const server = http.createServer((req, res) => {
     });
 }
   //uses express to allow server to grab and process static files
-  let filePath = path.join(__dirname, "code", pathname === "/" ? "home.html" : pathname);
+  let filePath = path.join(__dirname, "code", pathname === "/" ? "login.html" : pathname);
   //app.use just tells the server that it will be using the files inside the parathesis
   //express.static tells the server that it's going to be using static files (html, css, js, etc)
 
