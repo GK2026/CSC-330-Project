@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <div class="chat-container">
 
     <h2>Chat with Coach</h2>
@@ -17,8 +18,19 @@
         <input id="messageInput" type="text" placeholder="Type a message...">
         <button id="sendBtn">Send</button>
     </div>
+
+    <div id="homeBtnContainer">
+        <button id="homeBtn">Home</button>
+    </div>
+
 </div>
-<button id="homeBtn" onclick="location.pathname ='home.html'">Home</button>
+
+<script>
+document.getElementById("homeBtn").addEventListener("click", () => {
+    window.location.href = "home.html";
+});
+</script>
+
 <script src="js/coach.js"></script>
 </body>
 </html>
