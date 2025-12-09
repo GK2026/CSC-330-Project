@@ -128,19 +128,4 @@ body {
 #homeBtn:hover {
     background-color: #7aac7a;
 }
-
-#homeBtn {
-    background-color: #8fbc8f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 18px;
-  margin: 6px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  align-items: center;
-  margin-left:650px;
-  margin-right: 650px;
-  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-}
+ 
