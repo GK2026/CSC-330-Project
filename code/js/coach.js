@@ -45,3 +45,8 @@ socket.on("chatMessage", (data) => {
     addMessage(`${data.user}: ${data.text}`);
 });
 
+// Home button navigation
+document.getElementById("homeBtn").addEventListener("click", () => {
+    window.location.href = "home.html";
+});
+

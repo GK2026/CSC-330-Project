@@ -78,3 +78,28 @@ body {
 #sendBtn:hover {
     background-color: #477547;
 }
+
+#homeBtnContainer {
+    width: 100%
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    padding-right: 25%;
+}
+
+#homeBtn {
+    background-color: #8fbc8f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 5px;
+}
+
+
+#homeBtn:hover {
+    background-color: #7aac7a;
+}
