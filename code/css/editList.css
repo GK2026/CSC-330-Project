@@ -10,12 +10,15 @@ h1 {
   border-radius: 16px;
   padding: 28px;
   display: block;
-  margin-left: 500px;
-  margin-right: 500px;
+  margin-left: 550px;
+  margin-right: 550px;
 }
 #editing {
   background: #fffff;
   border: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border-radius: 16px;
   padding: 28px;
   margin-left: 20000;
